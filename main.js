@@ -101,7 +101,7 @@ var actualExpectation =
 var assert = require('assert');
 
 it('should be green', function () {
-  assert.equal(goodOnes(items), actualExpectation);
+  assert.deepEqual(goodOnes(items), actualExpectation);
 })
 
 var R = require('ramda');
@@ -113,47 +113,9 @@ function goodOnes(items) {
   function theGoodOne(acc, item) {
     if (item.good) {
       return acc.concat(item.id);
-    } else {
-      return acc;
+    } else if (item.children && item.children.length > 0) {
+      return R.reduce(theGoodOne, acc, item.children);
     }
+    return acc;
   }
 }
-
-
-
-// function getTrueIds(items) {
-//   return items.reduce(function(prev, curr, _idx, _arr) {
-
-//     console.log('initial prev', prev);
-
-//     if (curr.good) {
-//       console.log('curr is good', prev);
-//       return prev.concat(curr.id);
-//     } else if (curr.children && curr.children.length > 0) {
-//       // console.log(curr.children && curr.children.length > 0);
-//       curr.children.some(function(subItem) {
-//         if (subItem.good) {
-//           var newArr = prev.concat(subItem.id);
-//           console.log('subItem was good, returning', newArr);
-//           return newArr;
-//         } else {
-//           return prev;
-//         }
-//       });
-//     }
-
-//     console.log('just returning', prev);
-//     return prev;
-//      // else if (curr.children && curr.children.length > 0) {
-//      //  return children.map(function(child) {
-//      //    if (child.good) {
-//      //      return prev.concat(child.id);
-//      //    } else {
-//      //      return prev;
-//      //    }
-//      //  });
-
-//     // console.log(prev, curr, _idx);
-
-//   }, []);
-// }
