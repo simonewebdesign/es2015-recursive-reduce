@@ -1,0 +1,27 @@
+{
+  "name": "es2015-array-map-filter-reduce",
+  "version": "1.0.0",
+  "description": "Just toying around with functional programming",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonewebdesign/es2015-array-map-filter-reduce.git"
+  },
+  "keywords": [
+    "es2015",
+    "array",
+    "map",
+    "filter",
+    "reduce"
+  ],
+  "author": "Simone Vittori <hello+npm@simonewebdesign.it>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonewebdesign/es2015-array-map-filter-reduce/issues"
+  },
+  "homepage": "https://github.com/simonewebdesign/es2015-array-map-filter-reduce#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "ramda": "^0.19.1"
+  }
+}
