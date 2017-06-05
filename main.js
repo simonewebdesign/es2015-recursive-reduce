@@ -1,4 +1,4 @@
-var items =
+let items =
   [ { id: 1
     , good: true
     }
@@ -57,7 +57,7 @@ var items =
     }
   ]
 
-var expectation =
+let expectation =
   [ { id: 1
     , good: true
     }
@@ -93,29 +93,25 @@ var expectation =
     }
   ]
 
-var actualExpectation =
-  expectation.map(function (i) {
-    return i.id;
-  });
+let actualExpectation =
+  expectation.map(i => i.id)
 
-var assert = require('assert');
+let assert = require('assert')
 
-it('should be green', function () {
-  assert.deepEqual(goodOnes(items), actualExpectation);
-})
+it('should be green', () =>
+  assert.deepEqual(goodOnes(items), actualExpectation))
 
-var R = require('ramda');
+let R = require('ramda')
 
-// here we go
 function goodOnes(items) {
-  return R.reduce(theGoodOne, [], items);
+  return R.reduce(theGoodOne, [], items)
 }
 
 function theGoodOne(acc, item) {
   if (item.good) {
-    return acc.concat(item.id);
+    return acc.concat(item.id)
   } else if (item.children && item.children.length > 0) {
-    return R.reduce(theGoodOne, acc, item.children);
+    return R.reduce(theGoodOne, acc, item.children)
   }
-  return acc;
+  return acc
 }
