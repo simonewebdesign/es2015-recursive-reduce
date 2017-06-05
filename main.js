@@ -109,13 +109,13 @@ var R = require('ramda');
 // here we go
 function goodOnes(items) {
   return R.reduce(theGoodOne, [], items);
+}
 
-  function theGoodOne(acc, item) {
-    if (item.good) {
-      return acc.concat(item.id);
-    } else if (item.children && item.children.length > 0) {
-      return R.reduce(theGoodOne, acc, item.children);
-    }
-    return acc;
+function theGoodOne(acc, item) {
+  if (item.good) {
+    return acc.concat(item.id);
+  } else if (item.children && item.children.length > 0) {
+    return R.reduce(theGoodOne, acc, item.children);
   }
+  return acc;
 }
